@@ -1,0 +1,1 @@
+/home/dyeprii/.vimrc

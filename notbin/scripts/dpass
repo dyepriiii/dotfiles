@@ -1,0 +1,5 @@
+#!/bin/bash
+#dmenu -p "$1" -mask <&- && echo
+#! /bin/sh
+dmenu -p "sudo"  -y 500 -x 640 -h 32 -w 640 -i -q -sf "#ffffff" -nf "#ffffff" -nb "#1e1e1e" -sb "#1e1e1e" -fn "Source Code Pro-10:style=Bold" -sb "#ff0000" -mask <&-
+echo

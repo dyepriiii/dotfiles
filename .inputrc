@@ -1,0 +1,47 @@
+# Make sure we don't output everything on the 1 line
+set horizontal-scroll-mode off
+
+# Enable 8bit input
+set meta-flag On
+set input-meta On
+
+# Turns off 8th bit stripping
+set convert-meta Off
+
+# Keep the 8th bit for display
+set output-meta On
+
+# This controls the bell (beep) behaviour of readline
+# none, visible or audible - default is audible
+#set bell-style visible
+
+# All of the following map the escape sequence of the
+# value contained inside the 1st argument to the
+# readline specific functions
+
+"\eOd": backward-word
+"\eOc": forward-word
+
+# Console Shortcuts
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+"\e[1~": beginning-of-line
+"\e[7~": beginning-of-line
+"\e[2~": overwrite-mode
+"\e[3~": delete-char
+"\e[4~": end-of-line
+"\e[8~": end-of-line
+"\e[5~": beginning-of-history		# PgUp		=> beginning of history
+"\e[6~": end-of-history			# PgDown	=> end of history
+"\e[1;5C": forward-word			# Ctrl+right	=> forward word
+"\e[1;5D": backward-word		# Ctrl+left	=> backward word
+
+# Show tab completion options if ambiguous on first tab
+set show-all-if-ambiguous on
+
+# Ignore the case on tab completion
+set completion-ignore-case on
+
+# Don't tab-complete hidden files
+#set match-hidden-files off
+

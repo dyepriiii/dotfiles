@@ -1,0 +1,7 @@
+[user]
+	email = jeffreypablo0928@gmail.com
+	name = Jeffrey Pablo
+[alias]
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd|%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=short
+[core]
+	excludesfile = /Users/jeffreypablo/.gitignore_global

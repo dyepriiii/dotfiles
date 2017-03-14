@@ -1,0 +1,12 @@
+[Unit]
+Description=Poweroff my machine in 20 minutes
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+User=dyeprii
+ExecStart=/bin/sh -c '/home/dyeprii/.scripts/shutdown_notify.sh'
+
+[Install]
+WantedBy=multi-user.target
+

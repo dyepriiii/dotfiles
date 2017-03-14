@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# a workaround for desktop file not allowing = on Exec
+
+$(which opera) --user-data-dir=$1

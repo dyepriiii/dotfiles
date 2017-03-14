@@ -1,0 +1,25 @@
+#!/bin/bash
+
+DIRS=('/home' '/var' '/')
+DIRS_COUNT=${#DIRS[@]}
+
+tmp=/tmp/dirs
+
+if [[ ! -e $tmp ]]; then
+    echo 0 > $tmp
+fi
+
+last=$(cat $tmp)
+
+return_dir () {
+    dir=$(( $last % $DIRS_COUNT ))
+    echo ${DIRS[$dir]}
+}
+
+case $BLOCK_BUTTON in
+    4) echo $(( $last + 1 )) > $tmp ;;
+    5) echo $(( $last + 1 )) > $tmp ;;
+esac
+
+dir=$( return_dir )
+bash /home/dyeprii/bin/scripts/disk $dir

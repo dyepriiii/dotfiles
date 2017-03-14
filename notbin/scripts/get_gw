@@ -1,0 +1,12 @@
+#!/bin/bash
+
+GW=$(ip route | grep "default" | awk '{print $3}')
+
+if [[ $GW == '10.10.5.2' ]]; then
+    echo "PLDT"
+elif [[ $GW == '10.10.5.1' ]]; then
+    echo "Globe"
+else
+    echo "undefined"
+    exit 1
+fi

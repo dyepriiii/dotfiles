@@ -1,0 +1,12 @@
+#!/bin/bash
+
+win_titles=/tmp/win_titles # all window titles
+cur=/tmp/current_selected # current selected title
+
+i3-msg -t get_tree | jq '.' |egrep 'class|title' |grep -v i3bar | sed 's/"class"://g;s/"title"://g;s/,//g;s/\"//g' | while read -r line; read -r line2; do printf "%s\\n" "$line :: $line2"; done > $win_titles
+
+WINARRAY=( `cat $win_titles` )
+
+for win in "${WINARRAY[@]}"; do
+    echo $win;
+done

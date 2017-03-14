@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [[ $(ping -c5 google.com 2>&1 | egrep -i "100% packet loss|unknown host|network unreachable") ]]; then
+    touch /tmp/down
+else
+    test ! -e /tmp/down || rm /tmp/down
+fi
+

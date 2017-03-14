@@ -1,0 +1,11 @@
+#!/bin/bash
+
+win_name="Inbox - Mozilla Thunderbird"
+if [[ $win_name ]]; then
+    win_id=$(xwininfo -name "$win_name" |grep "Window id" | awk '{print $4}')
+
+    if [[ $win_id ]]; then
+        /usr/local/bin/seturgent $win_id 1
+    fi
+fi
+
