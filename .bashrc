@@ -125,6 +125,8 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+export PATH=~/bin/scripts:$PATH
+
 SSH_ENV=$HOME/.ssh/environment
 
 export EDITOR=vim
