@@ -20,4 +20,6 @@ rm -r ~/bin
 ln -s ~/dotfiles/notbin ~/bin
 rm ~/.vimrc
 ln -s ~/.vim_runtime/vimrc ~/.vimrc
+rm -r ~/.config/terminology/config
+ln -s ~/dotfiles/.config/terminology/config ~/.config/terminology/config
 bash ~/.vim_runtime/scripts/get_plugins.sh
