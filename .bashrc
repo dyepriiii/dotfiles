@@ -83,15 +83,13 @@ fi
 
 export TERM="xterm-256color"
 
-export PS1='\[$(tput setaf 12)\]┌─[\[$(tput setaf 9)\] \u\[$(tput setaf 254)\]@\[$(tput setaf 136)\]\h \[$(tput setaf 12)\]]-[ \[$(tput setaf 64)\]\w\[$(tput setaf 37)\]$(__git_ps1 " (%s)")\[$(tput setaf 10)\] \[$(tput setaf 12)\]]\n└─ᐷ \[\033[0m\]'
+# my ps1
+export PS1='\[$(tput setaf 12)\]┌─[\[$(tput setaf 9)\] \u\[$(tput setaf 254)\]@\[$(tput setaf 136)\]\h \[$(tput setaf 12)\]]-[ \[$(tput setaf 64)\]\w\[$(tput setaf 37)\]$(__git_ps1 " (%s)")\[$(tput setaf 10)\] \[$(tput setaf 12)\]]\n└─ᐷ \[$(tput setaf 250)\]'
 
-#  ❱
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors.ansi-dark && eval "$(dircolors -b ~/.dircolors.ansi-dark)" || eval "$(dircolors -b)"
     alias ls='ls -F --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
 
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
@@ -125,38 +123,20 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-export PATH=~/bin/scripts:$PATH
+export PATH=~/.local/bin:~/bin/scripts:$PATH
 
 SSH_ENV=$HOME/.ssh/environment
 
 export EDITOR=vim
 
 # start the ssh-agent
-function start_agent() {
-    echo "Initializing new SSH agent..."
-    # spawn ssh-agent
-    /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}" && echo Success!
-    chmod 600 "${SSH_ENV}"
-    . "${SSH_ENV}" > /dev/null
-    /usr/bin/ssh-add ~/.ssh/id_rsa
-}
-
-if [ -f "${SSH_ENV}" ]; then
-     . "${SSH_ENV}" > /dev/null
-     ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
-        start_agent;
-    }
-else
-    start_agent;
-fi
-
+eval `keychain --eval --agents ssh id_rsa`
 # sudo autocomplete
 complete -cf sudo
 
 ssldate() { echo | openssl s_client -connect $1:443 -servername $1 2>/dev/null | openssl x509 -noout -dates; }
 sslsubj() { echo | openssl s_client -connect $1:443 -servername $1 2>/dev/null | openssl x509 -noout -subject; }
 sslall() { echo | openssl s_client -connect $1:443 -servername $1 2>/dev/null | openssl x509 -noout -text; }
-#search() { pacman -Ss $1; aura -As $1; }
 
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias n="echo '  ñ'"
@@ -166,10 +146,14 @@ alias xo='xdg-open'
 alias edithosts='sudo vim /etc/hosts'
 alias digs='dig +short'
 alias ccat='pygmentize -g -O style=colorful,linenos=1'
-# mac
-#alias locate='mdfind'
 alias glances='python -m glances'
 alias ap='ansible-playbook'
 alias locate='mlocate'
+alias apt='sudo apt'
 
-test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+# mac
+#alias locate='mdfind'
+#test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
+# arch
+#search() { pacman -Ss $1; aura -As $1; }

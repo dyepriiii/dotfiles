@@ -1,7 +1,6 @@
 #!/bin/bash
 
-git clone git@github.com:dyepriiii/dotfiles.git ~/dotfiles
-git clone git@github.com:dyepriiii/.vim_runtime.git ~/.vim_runtime
+git clone https://github.com/dyepriiii/.vim_runtime.git ~/.vim_runtime
 rm ~/.bashrc
 ln -s ~/dotfiles/.bashrc ~
 rm ~/.bash_profile
