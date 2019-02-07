@@ -83,8 +83,15 @@ fi
 
 export TERM="xterm-256color"
 
+# venv
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+
+function virtualenv_info {
+    [[ -n "$VIRTUAL_ENV" ]] && echo "(venv:${VIRTUAL_ENV##*/})"
+}
+
 # my ps1
-export PS1='\[$(tput setaf 12)\]┌─[\[$(tput setaf 9)\] \u\[$(tput setaf 254)\]@\[$(tput setaf 136)\]\h \[$(tput setaf 12)\]]-[ \[$(tput setaf 64)\]\w\[$(tput setaf 37)\]$(__git_ps1 " (%s)")\[$(tput setaf 10)\] \[$(tput setaf 12)\]]\n└─ᐷ \[$(tput setaf 250)\]'
+export PS1='\[$(tput setaf 12)\]┌─[\[$(tput setaf 9)\] \u\[$(tput setaf 254)\]@\[$(tput setaf 136)\]\h \[$(tput setaf 12)\]]-[ \[$(tput setaf 64)\]\w\[$(tput setaf 37)\]$(__git_ps1 " (%s) $(virtualenv_info)")\[$(tput setaf 10)\] \[$(tput setaf 12)\]]\n└─ᐷ \[$(tput setaf 250)\]'
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -150,6 +157,7 @@ alias glances='python -m glances'
 alias ap='ansible-playbook'
 alias locate='mlocate'
 alias apt='sudo apt'
+alias emacs='emacs -nw'
 
 # mac
 #alias locate='mdfind'

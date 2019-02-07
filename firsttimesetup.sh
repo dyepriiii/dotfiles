@@ -1,6 +1,6 @@
 #!/bin/bash
 
-git clone https://github.com/dyepriiii/.vim_runtime.git ~/.vim_runtime
+git clone https://github.com/jtpsh/.vim_runtime.git ~/.vim_runtime
 rm ~/.bashrc
 ln -s ~/dotfiles/.bashrc ~
 rm ~/.bash_profile

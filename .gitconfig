@@ -2,6 +2,6 @@
 	email = git@jtp.sh
 	name = Jeffrey Pablo
 [alias]
-    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd|%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=short
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd|%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=short -n 20
 [core]
 	excludesfile = ~/.gitignore_global
